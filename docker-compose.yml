@@ -1,0 +1,35 @@
+services:
+  mongo:
+    image: mongo:6
+    container_name: cp_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  server:
+    build: ./server
+    container_name: cp_server
+    env_file:
+      - ./server/.env
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/carepay
+      - NODE_ENV=development
+      - JWT_SECRET=devsecret
+    depends_on:
+      - mongo
+    ports:
+      - "5000:5000"
+
+  client:
+    build: ./client
+    container_name: cp_client
+    depends_on:
+      - server
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:5000
+
+volumes:
+  mongo_data:

@@ -1,0 +1,23 @@
+:root {
+  --bg: #0b1020;
+  --card: #111731;
+  --text: #e7ecff;
+  --accent: #67e8f9;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 10% -10%, #1c2450 0%, var(--bg) 60%);
+  color: var(--text);
+}
+.container { max-width: 960px; margin: 24px auto; padding: 0 16px; }
+.card { background: var(--card); border-radius: 16px; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+input, select, button { padding: 10px 12px; border-radius: 8px; border: 1px solid #2a335f; background: #0f1430; color: var(--text); }
+button { cursor: pointer; border: none; background: linear-gradient(90deg, #5eead4, #67e8f9); color: #0b1020; font-weight: 600; }
+label { display: block; margin: 8px 0 4px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+h1, h2, h3 { margin: 12px 0; }
+.list { display: grid; gap: 12px; }
+.item { padding: 12px; border: 1px solid #2a335f; border-radius: 12px; }
+em { color: #a5b4fc; }

@@ -1,0 +1,108 @@
+{
+  "info": {
+    "name": "Affordmed CarePay",
+    "_postman_id": "b6b7861a-2d5a-4a9e-8c64-eaf3e2d0a111",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{base}}/api/health"
+      }
+    },
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "url": "{{base}}/api/auth/register",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Test User\", \"email\": \"test@example.com\", \"password\": \"secret123\"}"
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "url": "{{base}}/api/auth/login",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"test@example.com\", \"password\": \"secret123\"}"
+        }
+      }
+    },
+    {
+      "name": "Get Procedures",
+      "request": {
+        "method": "GET",
+        "url": "{{base}}/api/procedures"
+      }
+    },
+    {
+      "name": "Seed Procedures (DEV)",
+      "request": {
+        "method": "GET",
+        "url": "{{base}}/api/procedures/seed"
+      }
+    },
+    {
+      "name": "Create Quote",
+      "request": {
+        "method": "POST",
+        "url": "{{base}}/api/quotes",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"procedureId\": \"<replace>\", \"amount\": 50000, \"tenureMonths\": 12, \"interestRate\": 12}"
+        }
+      }
+    },
+    {
+      "name": "My Quotes",
+      "request": {
+        "method": "GET",
+        "url": "{{base}}/api/quotes",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
